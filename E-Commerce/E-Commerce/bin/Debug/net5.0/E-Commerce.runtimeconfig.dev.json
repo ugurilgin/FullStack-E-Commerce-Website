@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\futbo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\futbo\\.nuget\\packages"
+    ]
+  }
+}
