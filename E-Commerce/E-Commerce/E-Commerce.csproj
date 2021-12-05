@@ -4,8 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>E_Commerce</RootNamespace>
   </PropertyGroup>
-<ItemGroup>
-		<PackageReference Include="EntityFramework" Version="6.4.4" />
+	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.12">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,10 +21,4 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.12" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
 	</ItemGroup>
-<ItemGroup>
-  <Folder Include="Controller\" />
-  <Folder Include="ServiceImplements\" />
-  <Folder Include="ServiceAbstracts\" />
-  <Folder Include="WorkOfUnit\" />
-</ItemGroup>
 </Project>

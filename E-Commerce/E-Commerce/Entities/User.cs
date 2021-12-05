@@ -23,6 +23,7 @@ namespace E_Commerce.Entities
         public bool WriteCategories { get; set; }
         public bool ReadUsers { get; set; }
         public bool WriteUsers { get; set; }
+        public String Cookies { get; set; }
 
     }
 }

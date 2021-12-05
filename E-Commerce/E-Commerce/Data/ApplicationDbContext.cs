@@ -19,6 +19,7 @@ namespace E_Commerce.Data
             public DbSet<Shipper> Shippers { get; set; }
             public DbSet<Adress> Adress { get; set; }
             public DbSet<User> Users { get; set; }
+       // public DbSet<AdressCustomer> AdressCustomers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

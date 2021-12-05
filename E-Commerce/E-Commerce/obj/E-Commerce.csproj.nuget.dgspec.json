@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\futbo\\source\\repos\\E-Commerce\\E-Commerce\\E-Commerce.csproj": {}
+    "C:\\Users\\futbo\\OneDrive\\Belgeler\\GitHub\\FullStack-E-Commerce-Website\\E-Commerce\\E-Commerce\\E-Commerce.csproj": {}
   },
   "projects": {
-    "C:\\Users\\futbo\\source\\repos\\E-Commerce\\E-Commerce\\E-Commerce.csproj": {
+    "C:\\Users\\futbo\\OneDrive\\Belgeler\\GitHub\\FullStack-E-Commerce-Website\\E-Commerce\\E-Commerce\\E-Commerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\futbo\\source\\repos\\E-Commerce\\E-Commerce\\E-Commerce.csproj",
+        "projectUniqueName": "C:\\Users\\futbo\\OneDrive\\Belgeler\\GitHub\\FullStack-E-Commerce-Website\\E-Commerce\\E-Commerce\\E-Commerce.csproj",
         "projectName": "E-Commerce",
-        "projectPath": "C:\\Users\\futbo\\source\\repos\\E-Commerce\\E-Commerce\\E-Commerce.csproj",
+        "projectPath": "C:\\Users\\futbo\\OneDrive\\Belgeler\\GitHub\\FullStack-E-Commerce-Website\\E-Commerce\\E-Commerce\\E-Commerce.csproj",
         "packagesPath": "C:\\Users\\futbo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\futbo\\source\\repos\\E-Commerce\\E-Commerce\\obj\\",
+        "outputPath": "C:\\Users\\futbo\\OneDrive\\Belgeler\\GitHub\\FullStack-E-Commerce-Website\\E-Commerce\\E-Commerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\futbo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,10 +40,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.4.4, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.12, )"
