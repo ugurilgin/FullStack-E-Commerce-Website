@@ -1,47 +1,136 @@
 import React from 'react'
-import LogoComponent from './Logo/Logo';
-import { BsBasket,BsMap,BsMegaphone,BsCurrencyDollar,BsTruck, BsPerson} from "react-icons/bs";
-import '../../../css/admin.css';
-import MenuItemComponent from './MenuItemComponent';
+import { BsBasket,BsHouseDoor,BsMegaphone,BsCurrencyDollar,BsTruck, BsPerson,BsReverseLayoutSidebarReverse} from "react-icons/bs";
+import { IoAnalytics,  IoGridOutline ,IoListOutline } from "react-icons/io5";
+
+
+import './sidebar.css';
 
 function Sidebar(props) {
         return (
-            <div className="sidebar-container">
-                <LogoComponent />
-                <div className="menuItemList">
-                    <MenuItemComponent
-                        title="Products" 
-                        onClick={() => props.onChange('Products')}
-                        active={props.selectedItem === 'Products'}
-                    ><BsBasket/></MenuItemComponent>
-                    <MenuItemComponent
-                        title="Category" 
-                        onClick={() => props.onChange('Category')}
-                        active={props.selectedItem === 'Category'}
-                        ><BsMap/></MenuItemComponent>
-                    <MenuItemComponent
-                        title="Orders"
-                        onClick={() => props.onChange('Orders')}
-                        active={props.selectedItem === 'Orders'} 
-                        ><BsMegaphone/></MenuItemComponent>
-                    <MenuItemComponent
-                        title="Payments" 
-                        onClick={() => props.onChange('Payments')}
-                        active={props.selectedItem === 'Payments'}
-                        ><BsCurrencyDollar/></MenuItemComponent>
-                    <MenuItemComponent
-                        title="Shippers" 
-                        onClick={() => props.onChange('Shippers')}
-                        active={props.selectedItem === 'Shippers'} 
-                        ><BsTruck/></MenuItemComponent>
-                    <MenuItemComponent
-                        title="Customers" 
-                        onClick={() => props.onChange('Customers')}
-                        active={props.selectedItem === 'Customers'} 
-                        ><BsPerson/></MenuItemComponent>
-                    <div className="seperator"></div>
-                   
-                </div>
+            <div className="sidebar">
+             <div className="sideWrapper">
+                 <div className="sidebarMenu">
+                     <h3 className="sidebarTitle"> <BsHouseDoor className="sidebarTitleIcon"/> Home</h3>
+                     <ul className="sidebarList">
+                        <li className="sidebarListItem"> 
+                           
+                        <IoAnalytics className="sidebarIcon"/>    Analysis
+                          
+                        </li>
+                        
+                        </ul >
+                        <h3 className="sidebarTitle"> <BsBasket className="sidebarTitleIcon"/> Products</h3>
+                        <ul className="sidebarList">
+                        <li className="sidebarListItem"> 
+                           
+                        <IoAnalytics className="sidebarIcon"/>    Analysis
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoGridOutline className="sidebarIcon"/>
+                                Grid View
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoListOutline className="sidebarIcon"/>
+                                List View
+                          
+                        </li>
+                      
+                        </ul >
+                        <h3 className="sidebarTitle"> <BsReverseLayoutSidebarReverse className="sidebarTitleIcon"/> Category</h3>
+                        <ul className="sidebarList">
+                        <li className="sidebarListItem"> 
+                           
+                        <IoAnalytics className="sidebarIcon"/>    Analysis
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoGridOutline className="sidebarIcon"/>
+                                Grid View
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoListOutline className="sidebarIcon"/>
+                                List View
+                          
+                        </li>
+                        </ul >
+                        <h3 className="sidebarTitle"> <BsMegaphone className="sidebarTitleIcon"/> Orders</h3>
+                        <ul className="sidebarList">
+                        <li className="sidebarListItem"> 
+                           
+                        <IoAnalytics className="sidebarIcon"/>    Analysis
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoGridOutline className="sidebarIcon"/>
+                                Grid View
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoListOutline className="sidebarIcon"/>
+                                List View
+                          
+                        </li>
+                        </ul >
+                        <h3 className="sidebarTitle"> <BsCurrencyDollar className="sidebarTitleIcon"/> Payments</h3>
+                        <ul className="sidebarList">
+                        <li className="sidebarListItem"> 
+                           
+                        <IoAnalytics className="sidebarIcon"/>    Analysis
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoGridOutline className="sidebarIcon"/>
+                                Grid View
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoListOutline className="sidebarIcon"/>
+                                List View
+                          
+                        </li>
+                        </ul >
+                        <h3 className="sidebarTitle"> <BsTruck className="sidebarTitleIcon"/> Shippers</h3>
+                        <ul className="sidebarList">
+                        <li className="sidebarListItem"> 
+                           
+                        <IoAnalytics className="sidebarIcon"/>    Analysis
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoGridOutline className="sidebarIcon"/>
+                                Grid View
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoListOutline className="sidebarIcon"/>
+                                List View
+                          
+                        </li>
+                        </ul >
+                        <h3 className="sidebarTitle"> <BsPerson className="sidebarTitleIcon"/> Users</h3>
+                        <ul className="sidebarList">
+                        <li className="sidebarListItem"> 
+                           
+                        <IoAnalytics className="sidebarIcon"/>    Analysis
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoGridOutline className="sidebarIcon"/>
+                                Grid View
+                          
+                        </li>
+                        <li className="sidebarListItem"> 
+                            <IoListOutline className="sidebarIcon"/>
+                                List View
+                          
+                        </li>
+                        </ul >
+                    
+                 </div>
+                 </div>   
             </div>
         );
     }
