@@ -10,6 +10,7 @@ function Admin() {
             <div className="container">
             <Sidebar/>
             <AdminHome/>
+            
             </div>
         </div>
     )
