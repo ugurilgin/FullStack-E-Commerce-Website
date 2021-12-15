@@ -1,0 +1,47 @@
+.container{
+    display: flex;
+}
+.productList{
+    flex:4;
+    margin-top: 50px;
+
+}
+.table{
+    margin-top: 50px;
+}
+.title{
+    color:slateblue;
+    font-size: 22px;
+    font-weight:600;
+    margin-left: 18px;
+}
+.productListUser{
+    display: flex;
+    align-items: center;
+}
+.productListImg{
+    width: 32px;
+    height:32px;
+    border-radius:50% ;
+object-fit: cover;
+margin-right: 10px;
+}
+.productListEdit{
+border:none;
+border-radius: 10px;
+padding: 5px 10px;
+background-color: rgb(155, 209, 75);
+color: white;
+cursor: pointer;
+margin-right: 8px;
+margin-top:20px;
+}
+.productListDelete{
+    border:none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: rgb(223, 76, 50);
+    color: white;
+    cursor: pointer;
+    
+    }

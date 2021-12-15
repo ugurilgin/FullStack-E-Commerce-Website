@@ -5,7 +5,7 @@ import { MdVisibility } from "react-icons/md";
 function WidgetSm() {
     return (
         <div className="widgetSm">
-            <h3 className="WidgetSmTitle">New Join Members</h3>
+            <h3 className="WidgetSmTitle">Last Joined Users</h3>
             <ul className="widgetSmList">
                 <li className="widgetSmListItem">
                     <img src="https://drive.google.com/uc?export=view&id=1r_gBnfOpUHzmILerFzBeG_l7zY9QzOt4" className="widgetSmImg"/>
