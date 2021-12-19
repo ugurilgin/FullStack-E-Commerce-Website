@@ -24,8 +24,15 @@ namespace E_Commerce
         }
 
         public IConfiguration Configuration { get; }
+        readonly string ApiCorsPolicy = "_apiCorsPolicy";
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddPolicy(ApiCorsPolicy, builder =>
+            {
+                builder.WithOrigins("http://localhost:44398", "http://localhost:44324", "http://localhost:3000").AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true).AllowCredentials();
+          
+        }));
             services.AddTransient<IAdressService, AdressService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<ICustomerService, CustomerService>();
@@ -60,7 +67,7 @@ namespace E_Commerce
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCors(ApiCorsPolicy);
             app.UseRouting();
 
             app.UseAuthorization();

@@ -1,6 +1,6 @@
 import React from 'react'
 import './sidebarweb.css'
-export default function SideBarWeb() {
+function SideBarWeb() {
     return (
         <aside className='flex-20 sidebar'>
            <div className='flex-wrap'>
@@ -14,3 +14,4 @@ export default function SideBarWeb() {
         </aside>
     )
 }
+export default SideBarWeb;

@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import Header from '../../../Components/Admin/Header/Header'
 import Sidebar from '../../../Components/Admin/Sidebar/Sidebar'
 import './userlist.css'
@@ -7,24 +7,26 @@ import {RiDeleteBin6Line,RiEditLine} from 'react-icons/ri'
 import { Link } from 'react-router-dom';
 
 
-  
-  const rows = [
-    { id: 1,avatar:'https://drive.google.com/uc?export=view&id=1r_gBnfOpUHzmILerFzBeG_l7zY9QzOt4', Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 2, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 3, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 4, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 5, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 6, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 7, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 8, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 9, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-  ];
  
 
 function UserList() {
-    const [data,setData] = useState(rows)
+    const [data,setData] = useState()
+    useEffect(() => {
+      fetchMyPosts();
+    }, []);
+    const fetchMyPosts = async () => {
+      const response = await fetch("https://localhost:44324/api/Users/");
+      const json = await response.json();
+  
+      setData(json);
+    };
     const handleDelete=(id)=>{
         setData(data.filter(item => item.id !==id));
+        fetch('https://localhost:44324/api/Users/' + id, {
+          method: 'DELETE',
+        })
+        .then(res => res.text()) // or res.json()
+        .then(res => console.log(res))
     };
     const columns = [
         { field: 'id', headerName: 'ID', width: 15 },
@@ -35,21 +37,21 @@ function UserList() {
     
             </div>)
         }},
-        { field: 'Name', headerName: 'Name', width: 75 },
-        { field: 'Surname', headerName: 'Surname', width: 90 },
-        { field: 'BirthDate', headerName: 'Birth Date',type:'date', width: 100 },
-        { field: 'Email', headerName: 'Email', width: 70 },
-        { field: 'Username', headerName: 'Username', width: 95 },
-        { field: 'Password', headerName: 'Password', width: 95 },
-        { field: 'IsAdmin', headerName: 'IsAdmin',type:'bool',width: 80 },
-        { field: 'ReadOrders', headerName: 'ReadOrders',type:'bool',width: 120 },
-        { field: 'WriteOrders', headerName: 'WriteOrders',type:'bool',width: 120 },
-        { field: 'ReadProducts', headerName: 'ReadProducts',type:'bool',width: 120 },
-        { field: 'WriteProducts', headerName: 'WriteProducts',type:'bool',width: 120 },
-        { field: 'ReadCategories', headerName: 'ReadCategories',type:'bool',width: 130 },
-        { field: 'WriteCategories', headerName: 'WriteCategories',type:'bool',width: 130 },
-        { field: 'ReadUsers', headerName: 'ReadUsers',type:'bool',width: 100 },
-        { field: 'WriteUsers', headerName: 'WriteUsers',type:'bool',width: 100 },
+        { field: 'name', headerName: 'Name', width: 75 },
+        { field: 'surname', headerName: 'Surname', width: 90 },
+        { field: 'birthDate', headerName: 'Birth Date',type:'date', width: 100 },
+        { field: 'email', headerName: 'Email', width: 70 },
+        { field: 'username', headerName: 'Username', width: 95 },
+        { field: 'password', headerName: 'Password', width: 95 },
+        { field: 'isAdmin', headerName: 'IsAdmin',type:'bool',width: 80 },
+        { field: 'readOrders', headerName: 'ReadOrders',type:'bool',width: 120 },
+        { field: 'writeOrders', headerName: 'WriteOrders',type:'bool',width: 120 },
+        { field: 'readProducts', headerName: 'ReadProducts',type:'bool',width: 120 },
+        { field: 'writeProducts', headerName: 'WriteProducts',type:'bool',width: 120 },
+        { field: 'readCategories', headerName: 'ReadCategories',type:'bool',width: 130 },
+        { field: 'writeCategories', headerName: 'WriteCategories',type:'bool',width: 130 },
+        { field: 'readUsers', headerName: 'ReadUsers',type:'bool',width: 100 },
+        { field: 'writeUsers', headerName: 'WriteUsers',type:'bool',width: 100 },
         
     {field:"action",headerName:"Action",width:150,renderCell:(params)=>{
     return(

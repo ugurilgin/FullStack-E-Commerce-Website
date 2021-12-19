@@ -137,8 +137,20 @@ namespace E_Commerce.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Adress")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("BillDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerFullName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
@@ -146,26 +158,29 @@ namespace E_Commerce.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderNumber")
-                        .HasColumnType("int");
-
                     b.Property<int>("PaymentID")
                         .HasColumnType("int");
+
+                    b.Property<string>("PaymentName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ShipDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ShipNumber")
-                        .HasColumnType("int");
-
                     b.Property<int>("ShipperID")
                         .HasColumnType("int");
 
-                    b.Property<double>("Tax")
-                        .HasColumnType("float");
+                    b.Property<string>("ShipperName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Total")
                         .HasColumnType("float");
+
+                    b.Property<string>("Zip")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("createDate")
                         .HasColumnType("datetime2");
@@ -236,9 +251,6 @@ namespace E_Commerce.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Picture")
                         .HasColumnType("nvarchar(max)");
 
@@ -277,9 +289,39 @@ namespace E_Commerce.Migrations
 
                     b.HasKey("ProductID");
 
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entities.ProductList", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("picture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("productID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("productName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Products");
+                    b.ToTable("ProductList");
                 });
 
             modelBuilder.Entity("E_Commerce.Entities.Shipper", b =>
@@ -391,7 +433,7 @@ namespace E_Commerce.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("E_Commerce.Entities.Product", b =>
+            modelBuilder.Entity("E_Commerce.Entities.ProductList", b =>
                 {
                     b.HasOne("E_Commerce.Entities.Order", null)
                         .WithMany("Products")

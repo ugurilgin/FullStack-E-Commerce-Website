@@ -1,14 +1,20 @@
 import React from 'react'
 import './admin-header.css'
 import { IoIosNotifications,IoIosAirplane,IoIosSettings} from "react-icons/io";
+import { Link } from 'react-router-dom';
+import Cart from '../../Website/Carts/Cart';
 
 
 function Header() {
     return (
+        <>
+      
         <div className="top-bar">
           <div  className="top-bar-container">
               <div className="left">
+              <Link to="/admin-home" className='link'>
                     <span className="logo">Dashboard</span>
+                    </Link>
               </div>
               <div className="right">
                   <div className="icon-container"><IoIosNotifications color='slateblue' size = '30px'/>
@@ -21,6 +27,7 @@ function Header() {
               </div>
           </div>
         </div>
+        </>
     )
 }
 

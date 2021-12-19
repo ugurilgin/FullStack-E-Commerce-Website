@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import Header from '../../../Components/Admin/Header/Header'
 import Sidebar from '../../../Components/Admin/Sidebar/Sidebar'
 import './shipperlist.css'
@@ -7,38 +7,41 @@ import {RiDeleteBin6Line,RiEditLine} from 'react-icons/ri'
 import { Link } from 'react-router-dom';
 
 
-  
-  const rows = [
-    { id: 1,Picture:'https://drive.google.com/uc?export=view&id=1r_gBnfOpUHzmILerFzBeG_l7zY9QzOt4', Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 2, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 3, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 4, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 5, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 6, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 7, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 8, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-    { id: 9, Name: 'Uğur', Surname: 'Ilgın', BirthDate: '12/06/2021', Email: 'me@ugurilgin.com', Username: 'Snow', Password: '12/06/2021', IsAdmin: 1, ReadOrders: 1, WriteOrders: 1, ReadProducts: 1, WriteProducts: 1, ReadCategories: 1,WriteCategories: 1, ReadUsers: 1, WriteUsers: 1, Cookies: "fsfsfs5sdsf" },
-  ];
- 
-
 function ShipperList() {
-    const [data,setData] = useState(rows)
+  const [data,setData] = useState()
+  useEffect(() => {
+    fetchMyPosts();
+  }, []);
+  const fetchMyPosts = async () => {
+    const response = await fetch("https://localhost:44324/api/Shippers/");
+    const json = await response.json();
+
+    setData(json);
+  };
+ 
     const handleDelete=(id)=>{
-        setData(data.filter(item => item.id !==id));
+        setData(data.filter(item => item.shipperID !==id));
+        fetch('https://localhost:44324/api/Shippers/' + id, {
+  method: 'DELETE',
+})
+.then(res => res.text()) // or res.json()
+.then(res => console.log(res))
     };
+    if (!data) return <h3>...Loading</h3>;
+    
     const columns = [
-        { field: 'id', headerName: 'ID', width: 15 },
+        { field: 'shipperID', headerName: 'ID', width: 15 },
        
-        { field: 'CompanyName', headerName: 'CompanyName',width: 175 },
+        { field: 'companyName', headerName: 'CompanyName',width: 175 },
         
-        { field: 'Phone', headerName: 'Phone',type:'date', width: 100 },
+        { field: 'phone', headerName: 'Phone',type:'date', width: 100 },
     {field:"action",headerName:"Action",width:150,renderCell:(params)=>{
     return(
         <>
-        <Link to={'/admin-shippers/'+params.row.id}>
+        <Link to={'/admin-shippers/'+params.row.shipperID}>
         <RiEditLine className="productListEdit"/>
         </Link>
-         <RiDeleteBin6Line className="productListDelete" onClick={()=>handleDelete(params.row.id)}/>
+         <RiDeleteBin6Line className="productListDelete" onClick={()=>handleDelete(params.row.shipperID)}/>
     </>
     )
     }},
@@ -55,6 +58,8 @@ function ShipperList() {
     <h3 className="title"> Shippers List Table</h3>
 <div className="table" style={{ height: 570, width: '100%' }}>      
 <DataGrid
+ getRowId={(data) => data.shipperID}
+
         rows={data}
         columns={columns}
         pageSize={8}

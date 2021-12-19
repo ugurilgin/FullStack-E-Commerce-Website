@@ -1,5 +1,7 @@
 
-import React from 'react'
+import {React,useState,useEffect} from 'react'
+import { useParams } from "react-router-dom";
+
 import { BsBasket, BsCalendar, BsCurrencyDollar, BsMap, BsPerson, BsPhone } from 'react-icons/bs'
 import {  IoColorFill, IoHomeOutline, IoLocation } from 'react-icons/io5'
 import {   MdDescription, MdOutlineEmail, MdPermIdentity, MdPublish } from 'react-icons/md'
@@ -9,6 +11,21 @@ import Header from '../../../Components/Admin/Header/Header'
 import Sidebar from '../../../Components/Admin/Sidebar/Sidebar'
 import './orders.css'
 function Orders() {
+    const params = useParams();
+    const [data,setData] = useState()
+   
+
+  useEffect(() => {
+    fetchMyPosts();
+  }, []);
+  const fetchMyPosts = async () => {
+    const response = await fetch("https://localhost:44324/api/Orders/"+params.orderId);
+    const json = await response.json();
+
+    setData(json);
+  };
+  if (!data) return <h3>...Loading</h3>;
+
     return (
         
            <div>
@@ -18,7 +35,7 @@ function Orders() {
 <div className="products">
 <div className="productTitleContainer">
     <h1 className="userTitle">Review Orders</h1>
-    
+    {console.log(data)}
     </div>
 <div className="productContainer">
     <div className="productShow">
@@ -27,24 +44,24 @@ function Orders() {
     <div>
 <span className='userShowUsername'><BsPerson className='iconbox'/>Customer</span>
 <span className='userShowJobTitle'>
-<span className='customerName'>John Alexander</span>
-<span className='customerEmail'>alex@example.com</span>
+<span className='customerName'>{data.customerFullName}</span>
+<span className='customerEmail'>{data.customerEmail}</span>
 <span className='customerPhone'>+998 99 22123456</span></span>
 </div>
 
 <div>
 <span className='userShowUsername'><BsBasket className='iconbox'/>Order info</span>
 <span className='userShowJobTitle'>
-<span className='customerName'>Shipping: Fargo express</span>
-<span className='customerEmail'>Pay method: card</span>
+<span className='customerName'>Shipping: {data.shipperName}</span>
+<span className='customerEmail'>Pay method: {data.paymentnName}</span>
 <span className='customerPhone'>Status: new</span></span>
 </div>
 <div>
 <span className='userShowUsername'><IoLocation className='iconbox'/>Deliver to</span>
 <span className='userShowJobTitle'>
-<span className='customerName'>City: Tashkent, Uzbekistan</span>
-<span className='customerEmail'>Block A, House 123, Floor 2</span>
-<span className='customerPhone'>Po Box 10000</span></span>
+<span className='customerName'>City: {data.city}, {data.state}</span>
+<span className='customerEmail'>{data.adress}</span>
+<span className='customerPhone'>{data.zip}</span></span>
 </div>
 </div>
 </div>
@@ -71,10 +88,10 @@ function Orders() {
 <form className='userUpdateForm'>
     <div className='userUpdateLeft'>
         <div className='userUpdateItem'>
-            <span className='boldtitles'>Sub Total <span className='thintitle'>1000</span></span>
-            <span className='boldtitles'>Shipping Cost <span className='thintitle'>1000</span></span>
+            <span className='boldtitles'>Sub Total <span className='thintitle'>{data.total}</span></span>
+            
             <span className='boldtitles'>Grand Total </span>
-            <span className='totalCost'>$1000</span>
+            <span className='totalCost'>${data.total}</span>
             
         </div>
         

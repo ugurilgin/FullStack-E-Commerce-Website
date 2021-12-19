@@ -18,15 +18,26 @@ import NewPayment from './pages/Admin/Payments/NewPayment';
 import ShipperList from './pages/Admin/Shippers/ShipperList';
 import Shipper from './pages/Admin/Shippers/Shippers';
 import NewShipper from './pages/Admin/Shippers/NewShippers';
-
+import WebHomePage from './pages/Web/Home/webHomePage';
+import ProductPage from './Components/Website/ProductPage.js/ProductPage';
+import CheckOut from './Components/Website/CheckOut/CheckOut';
+import CheckOutReview from './Components/Website/CheckOutReview/CheckOutReview';
+import CallProductPage from './Components/Website/ProductPage.js/CallProductPage';
+import CallCheckOut from './Components/Website/CheckOut/CallCheckOut';
+import CallCheckOutReview from './Components/Website/CheckOutReview/CallCheckOutReview';
 function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<AdminHome/>} />
+        
+        <Route exact path="/" element={<WebHomePage/>} />
+        <Route exact path="/product/:productId" element={<CallProductPage/>} />
+        <Route exact path="/checkout" element={<CallCheckOut/>} />
+        <Route exact path="/checkout-review" element={<CallCheckOutReview/>} />
+      
         <Route exact path="/admin-home" element={<AdminHome/>} />
         <Route  exact path="/admin-users" element={<UserList/>} />
-        <Route  exact path="/admin-new-users" element={<NewUser/>} />
+        <Route  exact path="/admin-newUser" element={<NewUser/>} />
         <Route  exact path="/admin-users/:userId" element={<User/>} />
         <Route  exact path="/admin-products/:productId" element={<Product/>} />
         <Route  exact path="/admin-products" element={<ProductList/>} />
@@ -35,7 +46,7 @@ function App() {
         <Route  exact path="/admin-categories/:categoryId" element={<Category/>} />
         <Route  exact path="/admin-newCategory" element={<NewCategory/>} />
         <Route  exact path="/admin-orders" element={<OrderList/>} />
-        <Route  exact path="/admin-orders/:categoryId" element={<Orders/>} />
+        <Route  exact path="/admin-orders/:orderId" element={<Orders/>} />
         <Route  exact path="/admin-payments" element={<PaymentList/>} />
         <Route  exact path="/admin-payments/:paymentId" element={<Payment/>} />
         <Route  exact path="/admin-newPayment" element={<NewPayment/>} />
@@ -49,3 +60,4 @@ function App() {
 }
 
 export default App;
+

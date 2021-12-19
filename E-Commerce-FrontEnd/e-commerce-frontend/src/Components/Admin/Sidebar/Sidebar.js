@@ -28,12 +28,15 @@ function Sidebar(props) {
                       
                           
                         </li>
+                        <Link to="/admin-newProduct" className='link'>
                         <li className="sidebarListItem"> 
                             <IoGridOutline className="sidebarIcon"/>
                                Create New Product
                           
                         </li>
-                        <Link to="/admin-home" className='link'>
+                        </Link>
+                        <Link to="/admin-products" className='link'>
+                            
                         <li className="sidebarListItem"> 
                             <IoListOutline className="sidebarIcon"/>
                                 List View
@@ -47,16 +50,20 @@ function Sidebar(props) {
                            
                           
                         </li>
+                        <Link to="/admin-newCategory" className='link'>
                         <li className="sidebarListItem"> 
                             <IoGridOutline className="sidebarIcon"/>
                             Create New Category
                           
                         </li>
+                        </Link>
+                        <Link to="/admin-categories" className='link'>
                         <li className="sidebarListItem"> 
                             <IoListOutline className="sidebarIcon"/>
                                 List View
                           
                         </li>
+                        </Link>
                         </ul >
                         <h3 className="sidebarTitle"> <BsMegaphone className="sidebarTitleIcon"/> Orders</h3>
                         <ul className="sidebarList">
@@ -64,12 +71,13 @@ function Sidebar(props) {
                            
                           
                         </li>
-                      
+                        <Link to="/admin-orders" className='link'>
                         <li className="sidebarListItem"> 
                             <IoListOutline className="sidebarIcon"/>
                                 List View
                           
                         </li>
+                        </Link>
                         </ul >
                         <h3 className="sidebarTitle"> <BsCurrencyDollar className="sidebarTitleIcon"/> Payments</h3>
                         <ul className="sidebarList">
@@ -77,17 +85,22 @@ function Sidebar(props) {
                            
                           
                         </li>
+                        <Link to="/admin-newPayment" className='link'>
                         <li className="sidebarListItem"> 
                             <IoGridOutline className="sidebarIcon"/>
                             Create New Payments
 
                           
                         </li>
+                        </Link>
+                        <Link to="/admin-payments" className='link'>
                         <li className="sidebarListItem"> 
                             <IoListOutline className="sidebarIcon"/>
                                 List View
                           
                         </li>
+                       </Link>
+
                         </ul >
                         <h3 className="sidebarTitle"> <BsTruck className="sidebarTitleIcon"/> Shippers</h3>
                         <ul className="sidebarList">
@@ -95,17 +108,21 @@ function Sidebar(props) {
                            
                           
                         </li>
+                        <Link to="/admin-newShipper" className='link'>
                         <li className="sidebarListItem"> 
                             <IoGridOutline className="sidebarIcon"/>
                             Create New Shippers
 
                           
                         </li>
+                        </Link>
+                        <Link to="/admin-shippers" className='link'>
                         <li className="sidebarListItem"> 
                             <IoListOutline className="sidebarIcon"/>
                                 List View
                           
                         </li>
+                        </Link>
                         </ul >
                         <h3 className="sidebarTitle"> <BsPerson className="sidebarTitleIcon"/> Users</h3>
                         <ul className="sidebarList">
@@ -113,17 +130,21 @@ function Sidebar(props) {
                            
                           
                         </li>
+                        <Link to="/admin-newUser" className='link'>
                         <li className="sidebarListItem"> 
                             <IoGridOutline className="sidebarIcon"/>
                             Create New Users
 
                           
                         </li>
+                        </Link>
+                        <Link to="/admin-users" className='link'>
                         <li className="sidebarListItem"> 
                             <IoListOutline className="sidebarIcon"/>
                                 List View
                           
                         </li>
+                        </Link>
                         </ul >
                     
                  </div>

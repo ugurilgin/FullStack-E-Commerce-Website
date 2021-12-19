@@ -6,15 +6,27 @@ namespace E_Commerce.Entities
     public class Order:IEntity
     {
         public int OrderId { get; set; }
+        public string CustomerFullName { get; set; }
+        public string CustomerEmail { get; set; }
+        public string Adress { get; set; }
+        public string City { get; set; }
+
+        public string State { get; set; }
+
+        public string Zip { get; set; }
+
+
         public int CustomerID { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public ICollection<ProductList> Products { get; set; }
         public int ShipperID { get; set; }
+        public string ShipperName { get; set; }
+
         public int PaymentID { get; set; }
-        public double Tax { get; set; }
+        public string PaymentName { get; set; }
+       
         public DateTime BillDate { get; set; }
         public DateTime ShipDate { get; set; }
-        public int OrderNumber { get; set; }
-        public int ShipNumber { get; set; }
+        
         public double Total { get; set; }
         public int Id { get; set; }
         public DateTime createDate { get; set; }
